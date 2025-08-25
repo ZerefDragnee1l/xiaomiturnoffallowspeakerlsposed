@@ -1,0 +1,44 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.zeref.onlyheadset"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.zeref.onlyheadset"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packaging {
+        resources {
+            excludes += [ "META-INF/**" ]
+        }
+    }
+}
+
+dependencies {
+    // Xposed API, derlemeye dahil edilmez (compileOnly/provided).
+    compileOnly("de.robv.android.xposed:api:82")
+    compileOnly("de.robv.android.xposed:api:82:sources")
+}
